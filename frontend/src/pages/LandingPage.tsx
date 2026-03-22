@@ -659,10 +659,11 @@ export default function LandingPage() {
         .mock-txn-amount { font-size: 0.78rem; font-weight: 600; font-family: 'Syne', sans-serif; }
 
         /* STATS SECTION */
-        .stats-section {
-          padding: 60px 5%;
-          max-width: 1280px; margin: 0 auto;
-        }
+      .stats-section {
+  padding: 60px 5%;
+  max-width: 1280px; margin: 0 auto;
+  overflow: hidden;
+}
         .stats-grid {
           display: grid; grid-template-columns: repeat(4, 1fr);
           gap: 1px;
@@ -859,11 +860,11 @@ export default function LandingPage() {
           .cta-box { padding: 50px 24px; }
           footer { flex-direction: column; align-items: flex-start; }
         }
-        @media (max-width: 480px) {
-          .stats-grid { grid-template-columns: repeat(2, 1fr); }
-          .hero-actions { flex-direction: column; width: 100%; }
-          .btn-hero, .btn-outline { width: 100%; justify-content: center; }
-        }
+       @media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .btn-hero, .btn-outline { width: 100%; justify-content: center; }
+}
       `}</style>
 
       <FloatingOrbs />
