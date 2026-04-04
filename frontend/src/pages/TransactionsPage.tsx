@@ -83,7 +83,7 @@ function TransactionModal({ onClose, onSave, editData }: {
   const [date, setDate] = useState(editData?.date || new Date().toISOString().split("T")[0]);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-
+  const { symbol } = useCurrency();
   const categories = type === "income" ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
 
   const validate = () => {
@@ -115,10 +115,10 @@ function TransactionModal({ onClose, onSave, editData }: {
         </div>
         <div className="form-group">
           <label className="form-label">Amount</label>
-          <div className={`amount-input-wrap ${errors.amount ? "input-error" : ""}`}>
-            <span className="amount-prefix">$</span>
-            <input type="number" placeholder="0.00" value={amount} onChange={(e) => setAmount(e.target.value)} className="amount-input" min="0" step="0.01" />
-          </div>
+         <div className={`amount-input-wrap ${errors.amount ? "input-error" : ""}`}>
+  <span className="amount-prefix">{symbol}</span>
+  <input type="number" placeholder="0.00" value={amount} onChange={(e) => setAmount(e.target.value)} className="amount-input" min="0" step="0.01" />
+</div>
           {errors.amount && <div className="error-msg">{errors.amount}</div>}
         </div>
         <div className="form-group">

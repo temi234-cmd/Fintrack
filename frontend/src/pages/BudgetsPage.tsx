@@ -81,7 +81,7 @@ function BudgetModal({ onClose, onSave, editData, existingCategories }: {
   const [month, setMonth] = useState(editData?.month || currentMonth);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-
+ const { symbol } = useCurrency();
   const availableCategories = editData ? EXPENSE_CATEGORIES : EXPENSE_CATEGORIES.filter((c) => !existingCategories.includes(c));
 
   const validate = () => {
@@ -129,7 +129,7 @@ function BudgetModal({ onClose, onSave, editData, existingCategories }: {
         <div className="form-group">
           <label className="form-label">Monthly Limit</label>
           <div className={`amount-input-wrap ${errors.limit ? "input-error" : ""}`}>
-            <span className="amount-prefix">$</span>
+            <span className="amount-prefix">{symbol}</span>
             <input type="number" placeholder="0.00" value={limit} onChange={(e) => setLimit(e.target.value)} className="amount-input" min="0" step="0.01" />
           </div>
           {errors.limit && <div className="error-msg">{errors.limit}</div>}
